@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import helmet from "helmet";
 import connectDB from "./config/connectDB.js";
+import userRouter from "./routes/user.route.js";
 dotenv.config();
 const app = express();
 app.use(
@@ -30,6 +31,8 @@ app.get("/", (req, res) => {
     "<h2 style='text-align:center'>API is working! No need to visit here. :)</h2>"
   );
 });
+
+app.use('/api/users', userRouter)
 app.listen(PORT, () => {
   console.log(`Server is running on port: ${PORT}`);
 });
